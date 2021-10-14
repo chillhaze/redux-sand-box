@@ -91,11 +91,12 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-const mapStateToProps = ({ contacts }) => {
-  return {
-    contacts: contacts,
-  };
-};
+// const mapStateToProps = ({ phonebook }) => {
+//   return {
+//     contacts: phonebook.contacts,
+//     filtered: phonebook.filtered,
+//   };
+// };
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -103,4 +104,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default connect(null, mapDispatchToProps)(ContactForm);

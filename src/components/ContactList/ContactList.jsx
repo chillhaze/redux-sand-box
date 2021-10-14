@@ -8,15 +8,18 @@ import { deleteContact } from '../../redux/contacts/contacts-actions';
 
 const ContactList = ({ contacts, filtered, deleteContact }) => {
   // console.log('STATE ---> ', store.getState());
+  // console.log(contacts);
+  // console.log('filtered :', [filtered]);
 
-  const filteredContacts = contacts.filter(item =>
-    item.name.toLowerCase().includes(filtered.toLowerCase()),
-  );
+  //логику обработки пропсов перенес в mapStateToProps
+  // const filteredContacts = contacts.filter(item =>
+  //   item.name.toLowerCase().includes(filtered.toLowerCase()),
+  // );
 
   return (
     <div className={css.container}>
       <ul className={css.contactsList}>
-        {filteredContacts.map(({ id, name, number }) => {
+        {contacts.map(({ id, name, number }) => {
           return (
             <ContactItem
               key={id}
@@ -37,10 +40,15 @@ ContactList.propTypes = {
   onDeleteBtnPush: PropTypes.func,
 };
 
-const mapStateToProps = ({ contacts, filtered }) => {
+const mapStateToProps = state => {
+  const { contacts, filtered } = state.phonebook;
+
+  const filteredContacts = contacts.filter(item =>
+    item.name.toLowerCase().includes(filtered.toLowerCase()),
+  );
   return {
-    contacts,
-    filtered,
+    contacts: filteredContacts,
+    filtered: state.filtered,
   };
 };
 

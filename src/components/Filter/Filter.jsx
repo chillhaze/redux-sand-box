@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { changeFilter } from '../../redux/contacts/contacts-actions';
 
 const Filter = ({ filtered, changeFilter }) => {
-  // console.log('filteredContact: ', [filteredContact]);
+  // console.log('filtered: ', [filtered]);
 
   return (
     <div className={css.container}>
@@ -16,7 +16,7 @@ const Filter = ({ filtered, changeFilter }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         value={filtered}
-        onChange={e => changeFilter(e.currentTarget.value)}
+        onChange={changeFilter}
         className={css.input}
       />
     </div>
@@ -28,15 +28,15 @@ Filter.propTypes = {
   value: PropTypes.string,
 };
 
-const mapStateToProps = ({ filtered }) => {
+const mapStateToProps = ({ phonebook }) => {
   return {
-    filtered,
+    filtered: phonebook.filtered,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFilter: value => dispatch(changeFilter(value)),
+    changeFilter: e => dispatch(changeFilter(e.currentTarget.value)),
   };
 };
 

@@ -4,9 +4,9 @@ import css from './App.module.css';
 import { RiContactsBook2Fill } from 'react-icons/ri';
 import { IoMdContacts } from 'react-icons/io';
 
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
 
 const App = () => {
   // console.log(addContact);
